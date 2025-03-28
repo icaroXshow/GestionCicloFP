@@ -1,22 +1,49 @@
 import java.util.ArrayList;
 
+/**
+ * Clase que representa un ciclo formativo.
+ */
 public class Ciclo {
-    public String NOMBRE_CICLO;
-    public ArrayList<Estudiante> LISTA_ESTUDIANTES = new ArrayList<>();
+    private String nombreCiclo;
+    private ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
 
-    public Ciclo(String NOMBRE_CICLO) {
-        this.NOMBRE_CICLO = new String(NOMBRE_CICLO);
+    /**
+     * Constructor que inicializa el ciclo con su nombre.
+     *
+     * @param nombreCiclo Nombre del ciclo.
+     */
+    public Ciclo(String nombreCiclo) {
+        this.nombreCiclo = nombreCiclo;
     }
 
-    public void Agregar_estudiante(Estudiante e) { 
-        LISTA_ESTUDIANTES.add(e); 
+    /**
+     * Agrega un estudiante al ciclo.
+     *
+     * @param estudiante El estudiante a agregar.
+     */
+    public void agregarEstudiante(Estudiante estudiante) {
+        listaEstudiantes.add(estudiante);
     }
 
-    public String datos_ciclo() {  
-        String datos = "Ciclo: " + NOMBRE_CICLO + "\nEstudiantes:\n";
-        for (Estudiante e : LISTA_ESTUDIANTES) {
-            datos += e.datos_estudiante() + "\n";
+    /**
+     * Retorna los datos del ciclo y los estudiantes matriculados.
+     *
+     * @return Información del ciclo y sus estudiantes.
+     */
+    public String getDatosCiclo() {
+        String datos = "Ciclo: " + nombreCiclo + "\nEstudiantes:\n";
+        for (Estudiante estudiante : listaEstudiantes) {
+            datos += estudiante.getDatosEstudiante() + "\n";
         }
         return datos;
+    }
+
+    /**
+     * Obtiene el nombre del ciclo.
+     *
+     * @return El nombre del ciclo.
+     */
+    public String getNombreCiclo() {
+        return nombreCiclo;
     }
 }

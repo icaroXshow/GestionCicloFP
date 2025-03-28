@@ -1,16 +1,39 @@
+/**
+ * Clase que representa a un estudiante.
+ */
 public class Estudiante {
-    public String Nombre_estudiante;  
-    public int ID_ESTUDIANTE;         
-    public int Edad_Estudiante;       
-   
-    public Estudiante(String Nombre_estudiante, int ID_ESTUDIANTE, int Edad_Estudiante) {
-        this.Nombre_estudiante = Nombre_estudiante;
-        this.ID_ESTUDIANTE = ID_ESTUDIANTE;
-        this.Edad_Estudiante = Edad_Estudiante;
-       
+    private String nombreEstudiante;
+    private int idEstudiante;
+    private int edadEstudiante;
+
+    /**
+     * Constructor para inicializar un estudiante.
+     *
+     * @param nombreEstudiante Nombre del estudiante.
+     * @param idEstudiante     Identificador único del estudiante.
+     * @param edadEstudiante   Edad del estudiante.
+     */
+    public Estudiante(String nombreEstudiante, int idEstudiante, int edadEstudiante) {
+        this.nombreEstudiante = nombreEstudiante;
+        this.idEstudiante = idEstudiante;
+        this.edadEstudiante = edadEstudiante;
     }
 
-    public String datos_estudiante() {
-        return "Estudiante: " + Nombre_estudiante + " (ID: " + ID_ESTUDIANTE + ") Edad: " + Edad_Estudiante;
+    /**
+     * Retorna los datos del estudiante en formato String.
+     *
+     * @return Información del estudiante.
+     */
+    public String getDatosEstudiante() {
+        return "Estudiante: " + nombreEstudiante + " (ID: " + idEstudiante + ") Edad: " + edadEstudiante;
+    }
+
+    /**
+     * Obtiene el identificador del estudiante.
+     *
+     * @return El id del estudiante.
+     */
+    public int getIdEstudiante() {
+        return idEstudiante;
     }
 }

@@ -1,59 +1,91 @@
 import java.util.ArrayList;
 
+/**
+ * Clase para gestionar ciclos y la matriculación de estudiantes.
+ */
 public class GestionCicloFP {
-    public ArrayList<Estudiante> lista_estudiantes = new ArrayList<>(); 
-    public ArrayList<Ciclo> lista_ciclos = new ArrayList<>();         
+    private ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
+    private ArrayList<Ciclo> listaCiclos = new ArrayList<>();
 
-    public void AgregarEstudiante(String Nombre, int ID, int Edad) {  
-        lista_estudiantes.add(new Estudiante(Nombre, ID, Edad));
+    /**
+     * Agrega un nuevo estudiante a la lista.
+     *
+     * @param nombre Nombre del estudiante.
+     * @param id     Identificador del estudiante.
+     * @param edad   Edad del estudiante.
+     */
+    public void agregarEstudiante(String nombre, int id, int edad) {
+        listaEstudiantes.add(new Estudiante(nombre, id, edad));
     }
 
-    public void AgregarCiclo(String NombreCiclo) { 
-    	lista_ciclos.add(new Ciclo(NombreCiclo));
+    /**
+     * Agrega un nuevo ciclo a la lista.
+     *
+     * @param nombreCiclo Nombre del ciclo.
+     */
+    public void agregarCiclo(String nombreCiclo) {
+        listaCiclos.add(new Ciclo(nombreCiclo));
     }
 
-    public void Matricular_estudiante(int id_estudiante, String nombre_ciclo) { 
-        Estudiante est = null; 
-        Ciclo cur = null;      
+    /**
+     * Matricula a un estudiante en un ciclo.
+     *
+     * @param idEstudiante Identificador del estudiante.
+     * @param nombreCiclo  Nombre del ciclo en el que se matriculará el estudiante.
+     */
+    public void matricularEstudiante(int idEstudiante, String nombreCiclo) {
+        Estudiante estudianteEncontrado = null;
+        Ciclo cicloEncontrado = null;
 
-        for (Estudiante e : lista_estudiantes) { 
-            if (e.ID_ESTUDIANTE == id_estudiante) {
-                est = e;
+        // Buscar el estudiante por su id
+        for (Estudiante estudiante : listaEstudiantes) {
+            if (estudiante.getIdEstudiante() == idEstudiante) {
+                estudianteEncontrado = estudiante;
                 break;
             }
         }
 
-        for (Ciclo c : lista_ciclos) { 
-            if (c.NOMBRE_CICLO.equals(nombre_ciclo)) {
-                cur = c;
+        // Buscar el ciclo por su nombre
+        for (Ciclo ciclo : listaCiclos) {
+            if (ciclo.getNombreCiclo().equals(nombreCiclo)) {
+                cicloEncontrado = ciclo;
                 break;
             }
         }
 
-        if (est != null && cur != null) {
-            cur.Agregar_estudiante(est);
+        // Si se encuentran tanto el estudiante como el ciclo, se realiza la matriculación
+        if (estudianteEncontrado != null && cicloEncontrado != null) {
+            cicloEncontrado.agregarEstudiante(estudianteEncontrado);
         }
     }
 
-    public void Mostrar_ciclos() { 
-        for (Ciclo ciclo : lista_ciclos) {
-            System.out.println(ciclo.datos_ciclo());
+    /**
+     * Muestra la información de todos los ciclos.
+     */
+    public void mostrarCiclos() {
+        for (Ciclo ciclo : listaCiclos) {
+            System.out.println(ciclo.getDatosCiclo());
         }
     }
 
+    /**
+     * Método principal para ejecutar el programa.
+     *
+     * @param args Argumentos de línea de comandos.
+     */
     public static void main(String[] args) {
         GestionCicloFP gestion = new GestionCicloFP();
 
-        gestion.AgregarEstudiante("Alicia", 1, 20);
-        gestion.AgregarEstudiante("Roberto", 2, 22);
+        gestion.agregarEstudiante("Alicia", 1, 20);
+        gestion.agregarEstudiante("Roberto", 2, 22);
 
-        gestion.AgregarCiclo("DAW");
-        gestion.AgregarCiclo("ASIR");
+        gestion.agregarCiclo("DAW");
+        gestion.agregarCiclo("ASIR");
 
-        gestion.Matricular_estudiante(1, "DAW");
-        gestion.Matricular_estudiante(2, "ASIR");
+        gestion.matricularEstudiante(1, "DAW");
+        gestion.matricularEstudiante(2, "ASIR");
 
-        gestion.Mostrar_ciclos();
+        gestion.mostrarCiclos();
     }
 }
 
