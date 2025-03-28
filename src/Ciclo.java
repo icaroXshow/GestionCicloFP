@@ -32,6 +32,7 @@ public class Ciclo {
      */
     public String getDatosCiclo() {
         String datos = "Ciclo: " + nombreCiclo + "\nEstudiantes:\n";
+        // Recorre la lista de estudiantes y añade sus datos a la cadena final.
         for (Estudiante estudiante : listaEstudiantes) {
             datos += estudiante.getDatosEstudiante() + "\n";
         }

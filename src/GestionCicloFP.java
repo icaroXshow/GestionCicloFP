@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Clase para gestionar ciclos y la matriculación de estudiantes.
+ * Clase para gestionar ciclos formativos y la matriculación de estudiantes.
  */
 public class GestionCicloFP {
     private ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
@@ -37,7 +37,7 @@ public class GestionCicloFP {
         Estudiante estudianteEncontrado = null;
         Ciclo cicloEncontrado = null;
 
-        // Buscar el estudiante por su id
+        // Buscar el estudiante por su ID.
         for (Estudiante estudiante : listaEstudiantes) {
             if (estudiante.getIdEstudiante() == idEstudiante) {
                 estudianteEncontrado = estudiante;
@@ -45,7 +45,7 @@ public class GestionCicloFP {
             }
         }
 
-        // Buscar el ciclo por su nombre
+        // Buscar el ciclo por su nombre.
         for (Ciclo ciclo : listaCiclos) {
             if (ciclo.getNombreCiclo().equals(nombreCiclo)) {
                 cicloEncontrado = ciclo;
@@ -53,7 +53,7 @@ public class GestionCicloFP {
             }
         }
 
-        // Si se encuentran tanto el estudiante como el ciclo, se realiza la matriculación
+        // Si se encuentran tanto el estudiante como el ciclo, se realiza la matriculación.
         if (estudianteEncontrado != null && cicloEncontrado != null) {
             cicloEncontrado.agregarEstudiante(estudianteEncontrado);
         }

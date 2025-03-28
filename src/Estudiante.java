@@ -31,7 +31,7 @@ public class Estudiante {
     /**
      * Obtiene el identificador del estudiante.
      *
-     * @return El id del estudiante.
+     * @return El ID del estudiante.
      */
     public int getIdEstudiante() {
         return idEstudiante;
